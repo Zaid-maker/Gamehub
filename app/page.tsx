@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <div className="p-2">
       <Button>Click me</Button>
-      <UserButton />
+      <UserButton afterSignOutUrl="/" />
     </div>
   );
 }
