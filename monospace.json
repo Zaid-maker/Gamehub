@@ -1,0 +1,22 @@
+{
+    "previews": [
+        {
+            "command": [
+                "npm",
+                "run",
+                "dev",
+                "--",
+                "--port",
+                "$PORT",
+                "--hostname",
+                "0.0.0.0"
+            ],
+            "id": "web",
+            "manager": "web"
+        },
+        {
+            "id": "ios",
+            "manager": "ios"
+        }
+    ]
+}
