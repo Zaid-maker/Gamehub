@@ -21,3 +21,9 @@ model User {
   createAt  DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+model Stream {
+  id           String  @id @default(uuid())
+  name         String  @db.Text
+  thumbnailUrl String? @db.Text
+}
