@@ -29,7 +29,7 @@ export const UserItem = ({ username, imageUrl, isLive }: UserItemProps) => {
       variant="ghost"
       className={cn(
         "w-full h-12",
-        collapsed ? "justify-center" : "justfy-start",
+        collapsed ? "justify-center" : "justify-start",
         isActive && "bg-accent"
       )}
     >
