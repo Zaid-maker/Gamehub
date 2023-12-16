@@ -1,7 +1,7 @@
 import React from "react";
 
 import { cva, type VariantProps } from "class-variance-authority";
-import { Avatar, AvatarImage } from "./ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { cn } from "@/lib/utils";
 
 const avatarSizes = cva("", {
@@ -31,6 +31,10 @@ export const UserAvatar = ({ username, imageUrl, isLive }: UserAvatarProps) => {
         )}
       >
         <AvatarImage src={imageUrl} className="object-cover" />
+        <AvatarFallback>
+          {username[0]}
+          {username[username.length - 1]}
+        </AvatarFallback>
       </Avatar>
     </div>
   );
