@@ -2,6 +2,12 @@
 
 import React from "react";
 
-export const UserItem = () => {
+interface UserItemProps {
+  username: string;
+  imageUrl: string;
+  isLive?: boolean;
+}
+
+export const UserItem = ({ username, imageUrl, isLive }: UserItemProps) => {
   return <div>UserItem</div>;
 };
