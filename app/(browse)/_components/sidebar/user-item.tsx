@@ -1,5 +1,6 @@
 "use client";
 
+import { LiveBadge } from "@/components/live-badge";
 import { Button } from "@/components/ui/button";
 import { UserAvatar } from "@/components/user-avatar";
 import { cn } from "@/lib/utils";
@@ -28,7 +29,7 @@ export const UserItem = ({ username, imageUrl, isLive }: UserItemProps) => {
       variant="ghost"
       className={cn(
         "w-full h-12",
-        collapsed ? "justify-center" : "justify-start",
+        collapsed ? "justify-center" : "justfy-start",
         isActive && "bg-accent"
       )}
     >
@@ -39,12 +40,9 @@ export const UserItem = ({ username, imageUrl, isLive }: UserItemProps) => {
             collapsed && "justify-center"
           )}
         >
-          <UserAvatar
-            imageUrl={imageUrl}
-            username={username}
-            isLive={isLive}
-            showBadge
-          />
+          <UserAvatar imageUrl={imageUrl} username={username} isLive={isLive} />
+          {!collapsed && <p className="truncate">{username}</p>}
+          {!collapsed && isLive && <LiveBadge className="ml-auto" />}
         </div>
       </Link>
     </Button>
