@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useSidebar } from "@/store/use-sidebar";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 
@@ -30,7 +31,16 @@ export const UserItem = ({ username, imageUrl, isLive }: UserItemProps) => {
         isActive && "bg-accent"
       )}
     >
-      UserItem
+      <Link href={href}>
+        <div
+          className={cn(
+            "flex items-center w-full gap-x-4",
+            collapsed && "justify-center"
+          )}
+        >
+          <UserAvatar imageUrl={imageUrl} username={username} isLive={isLive} />
+        </div>
+      </Link>
     </Button>
   );
 };
