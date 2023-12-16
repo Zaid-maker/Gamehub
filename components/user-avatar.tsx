@@ -20,14 +20,24 @@ interface UserAvatarProps extends VariantProps<typeof avatarSizes> {
   username: string;
   imageUrl: string;
   isLive?: boolean;
+  showBadge?: boolean;
 }
 
-export const UserAvatar = ({ username, imageUrl, isLive }: UserAvatarProps) => {
+export const UserAvatar = ({
+  username,
+  imageUrl,
+  isLive,
+  showBadge,
+  size,
+}: UserAvatarProps) => {
+  const canShowBadge = showBadge && isLive;
+
   return (
     <div className="relative">
       <Avatar
         className={cn(
-          isLive && "ring-2 ring-rose-500 border border-background"
+          isLive && "ring-2 ring-rose-500 border border-background",
+          avatarSizes({ size })
         )}
       >
         <AvatarImage src={imageUrl} className="object-cover" />
@@ -36,6 +46,11 @@ export const UserAvatar = ({ username, imageUrl, isLive }: UserAvatarProps) => {
           {username[username.length - 1]}
         </AvatarFallback>
       </Avatar>
+      {canShowBadge && (
+        <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2">
+          {/*<LiveBadge />*/}
+        </div>
+      )}
     </div>
   );
 };
