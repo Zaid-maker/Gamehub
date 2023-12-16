@@ -1,8 +1,6 @@
-import React from "react";
-
+import { cn } from "@/lib/utils";
 import { cva, type VariantProps } from "class-variance-authority";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
-import { cn } from "@/lib/utils";
 
 const avatarSizes = cva("", {
   variants: {
