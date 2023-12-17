@@ -1,6 +1,8 @@
 "use client";
 
+import { onFollow } from "@/actions/follow";
 import { Button } from "@/components/ui/button";
+import { useTransition } from "react";
 
 interface ActionsProps {
   isFollowing: boolean;
@@ -8,9 +10,17 @@ interface ActionsProps {
 }
 
 export const Actions = ({ isFollowing, userId }: ActionsProps) => {
+  const [isPending, startTransition] = useTransition();
+
+  const onClick = () => {
+    onFollow("123");
+  };
+
   return (
     <>
-      <Button variant="primary">{isFollowing ? "Unfollow" : "Follow"}</Button>
+      <Button disabled={isPending} variant="primary">
+        {isFollowing ? "Unfollow" : "Follow"}
+      </Button>
     </>
   );
 };
