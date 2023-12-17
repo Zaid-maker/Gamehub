@@ -7,7 +7,6 @@ import { cn } from "@/lib/utils";
 import { useSidebar } from "@/store/use-sidebar";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React from "react";
 
 interface UserItemProps {
   username: string;
