@@ -1,6 +1,7 @@
 import { getUserByUsername } from "@/lib/user-service";
 import { notFound } from "next/navigation";
 import React from "react";
+import { Actions } from "./_components/actions";
 
 interface UserPageProps {
   params: {
@@ -15,7 +16,11 @@ const UserPage = async ({ params }: UserPageProps) => {
     notFound();
   }
 
-  return <div>User: {params.username}</div>;
+  return (
+    <div>
+      <Actions />
+    </div>
+  );
 };
 
 export default UserPage;
