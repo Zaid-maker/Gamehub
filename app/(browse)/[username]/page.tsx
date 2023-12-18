@@ -17,10 +17,11 @@ const UserPage = async ({ params }: UserPageProps) => {
     notFound();
   }
 
-  const isFollowing = await isFollowingUser(params.username);
+  const isFollowing = await isFollowingUser(user.id);
 
   return (
-    <div>
+    <div className="flex pl-2">
+      <p>Is Following? {`${isFollowing}`}</p>
       <Actions isFollowing={isFollowing} userId={user.id} />
     </div>
   );
