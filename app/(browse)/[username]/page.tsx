@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import React from "react";
 import { Actions } from "./_components/actions";
 import { isFollowingUser } from "@/lib/follow-service";
+import { isBlockedByUser } from "@/lib/block-service";
 
 interface UserPageProps {
   params: {
@@ -17,10 +18,16 @@ const UserPage = async ({ params }: UserPageProps) => {
     notFound();
   }
 
-  const isFollowing = await isFollowingUser(params.username);
+  const isFollowing = await isFollowingUser(user.id);
+  const isBlocked = await isBlockedByUser(user.id);
+
+  if (isBlocked) {
+    notFound();
+  }
 
   return (
-    <div>
+    <div className="flex pl-2">
+      <p>Is Following? {`${isFollowing}`}</p>
       <Actions isFollowing={isFollowing} userId={user.id} />
     </div>
   );
