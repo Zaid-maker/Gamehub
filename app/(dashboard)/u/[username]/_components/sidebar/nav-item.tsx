@@ -9,13 +9,13 @@ import { useSidebar } from "@/store/use-sidebar";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-interface UserItemProps {
+interface NavItemProps {
   username: string;
   imageUrl: string;
   isLive?: boolean;
 }
 
-export const UserItem = ({ username, imageUrl, isLive }: UserItemProps) => {
+export const NavItem = ({ username, imageUrl, isLive }: NavItemProps) => {
   const pathname = usePathname();
 
   const { collapsed } = useSidebar((state) => state);
