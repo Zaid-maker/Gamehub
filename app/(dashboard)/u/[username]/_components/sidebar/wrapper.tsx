@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { useSidebar } from "@/store/use-sidebar";
+import { useCreatorSidebar } from "@/store/use-creator-sidebar";
 import React from "react";
 
 interface WrapperProps {
@@ -9,7 +9,7 @@ interface WrapperProps {
 }
 
 export const Wrapper = ({ children }: WrapperProps) => {
-  const { collapsed } = useSidebar((state) => state);
+  const { collapsed } = useCreatorSidebar((state) => state);
 
   return (
     <aside
