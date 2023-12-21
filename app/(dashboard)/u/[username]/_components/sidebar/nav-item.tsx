@@ -6,22 +6,26 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { UserAvatar } from "@/components/user-avatar";
 import { cn } from "@/lib/utils";
 import { useSidebar } from "@/store/use-sidebar";
+import { LucideIcon } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 interface NavItemProps {
-  username: string;
-  imageUrl: string;
-  isLive?: boolean;
+  icon: LucideIcon;
+  label: string;
+  href: string;
+  isActive: boolean;
 }
 
-export const NavItem = ({ username, imageUrl, isLive }: NavItemProps) => {
+export const NavItem = ({
+  icon: Icon,
+  label,
+  href,
+  isActive,
+}: NavItemProps) => {
   const pathname = usePathname();
 
   const { collapsed } = useSidebar((state) => state);
-
-  const href = `/${username}`;
-  const isActive = pathname === href;
 
   return (
     <Button
@@ -39,11 +43,7 @@ export const NavItem = ({ username, imageUrl, isLive }: NavItemProps) => {
             "flex items-center w-full gap-x-4",
             collapsed && "justify-center"
           )}
-        >
-          <UserAvatar imageUrl={imageUrl} username={username} isLive={isLive} />
-          {!collapsed && <p className="truncate">{username}</p>}
-          {!collapsed && isLive && <LiveBadge className="ml-auto" />}
-        </div>
+        ></div>
       </Link>
     </Button>
   );
