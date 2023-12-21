@@ -43,13 +43,13 @@ export const getRecommended = async () => {
         ],
       },
       orderBy: {
-        createAt: "desc",
+        createdAt: "desc",
       },
     });
   } else {
     users = await db.user.findMany({
       orderBy: {
-        createAt: "desc",
+        createdAt: "desc",
       },
     });
   }
