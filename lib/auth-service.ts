@@ -1,5 +1,5 @@
 import { currentUser } from "@clerk/nextjs";
-import { db } from "./db";
+import { db } from "@/lib/db";
 
 export const getSelf = async () => {
   const self = await currentUser();
@@ -42,5 +42,5 @@ export const getSelfByUsername = async (username: string) => {
     throw new Error("Unauthorized");
   }
 
-  return self;
+  return user;
 };
