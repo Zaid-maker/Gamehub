@@ -7,9 +7,9 @@ const Chat = async () => {
   const self = await getSelf();
   const stream = await getStreamByUserId(self.id);
 
-  //if (!stream) {
-  //  throw new Error("Stream not found");
-  //}
+  if (!stream) {
+    throw new Error("Stream not found");
+  }
 
   return (
     <div className="p-6">
@@ -20,17 +20,17 @@ const Chat = async () => {
         <ToggleCard
           field="isChatEnabled"
           label="Enable Chat"
-          value={stream?.isChatEnabled}
+          value={stream.isChatEnabled}
         />
         <ToggleCard
           field="isChatDelayed"
           label="Delay Chat"
-          value={stream?.isChatDelayed}
+          value={stream.isChatDelayed}
         />
         <ToggleCard
           field="isChatFollowersOnly"
           label="Must be following to chat"
-          value={stream?.isChatFollowersOnly}
+          value={stream.isChatFollowersOnly}
         />
       </div>
     </div>
