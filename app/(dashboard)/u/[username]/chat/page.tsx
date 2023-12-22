@@ -16,11 +16,22 @@ const Chat = async () => {
       <div className="mb-4">
         <h1 className="text-2xl font-semibold">Chat Settings</h1>
       </div>
-      <div className="">
-        <ToggleCard label="Enable Chat" />
-        <ToggleCard />
-        <ToggleCard />
-        <ToggleCard />
+      <div className="space-y-4">
+        <ToggleCard
+          field="isChatEnabled"
+          label="Enable Chat"
+          value={stream?.isChatEnabled}
+        />
+        <ToggleCard
+          field="isChatDelayed"
+          label="Delay Chat"
+          value={stream?.isChatDelayed}
+        />
+        <ToggleCard
+          field="isChatFollowersOnly"
+          label="Must be following to chat"
+          value={stream?.isChatFollowersOnly}
+        />
       </div>
     </div>
   );
