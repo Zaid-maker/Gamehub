@@ -1,8 +1,17 @@
 import { Button } from "@/components/ui/button";
 import React from "react";
 import { UrlCard } from "./_components/url-card";
+import { getSelf } from "@/lib/auth-service";
+import { getStreamByUserId } from "@/lib/stream-service";
 
-const Keys = () => {
+const Keys = async () => {
+  const self = await getSelf();
+  const stream = await getStreamByUserId(self.id);
+
+  if (!stream) {
+    throw new Error("Stream not found");
+  }
+
   return (
     <div className="p-6">
       <div className="flex items-center justify-between mb-4">
