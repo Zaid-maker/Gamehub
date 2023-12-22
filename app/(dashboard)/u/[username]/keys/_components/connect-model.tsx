@@ -28,7 +28,7 @@ const WHIP = String(IngressInput.WHIP_INPUT);
 
 type IngressType = typeof RTMP | typeof WHIP;
 
-export const ConnectModel = () => {
+export const ConnectModal = () => {
   const closeRef = useRef<ElementRef<"button">>(null);
   const [isPending, startTransition] = useTransition();
   const [ingressType, setIngressType] = useState<IngressType>(RTMP);
@@ -59,7 +59,7 @@ export const ConnectModel = () => {
           onValueChange={(value) => setIngressType(value)}
         >
           <SelectTrigger className="w-full">
-            <SelectValue placeholder="Ingess Type" />
+            <SelectValue placeholder="Ingress Type" />
           </SelectTrigger>
           <SelectContent>
             <SelectItem value={RTMP}>RTMP</SelectItem>

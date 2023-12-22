@@ -21,12 +21,12 @@ const roomService = new RoomServiceClient(
 
 const ingressClient = new IngressClient(process.env.LIVEKIT_API_URL!);
 
-export const resetIngresses = async (hostIdentify: string) => {
+export const resetIngresses = async (hostIdentity: string) => {
   const ingresses = await ingressClient.listIngress({
-    roomName: hostIdentify,
+    roomName: hostIdentity,
   });
 
-  const rooms = await roomService.listRooms([hostIdentify]);
+  const rooms = await roomService.listRooms([hostIdentity]);
 
   for (const room of rooms) {
     await roomService.deleteRoom(room.name);
@@ -71,9 +71,7 @@ export const createIngress = async (ingressType: IngressInput) => {
   }
 
   await db.stream.update({
-    where: {
-      userId: self.id,
-    },
+    where: { userId: self.id },
     data: {
       ingressId: ingress.ingressId,
       serverUrl: ingress.url,
@@ -82,6 +80,5 @@ export const createIngress = async (ingressType: IngressInput) => {
   });
 
   revalidatePath(`/u/${self.username}/keys`);
-
   return ingress;
 };
