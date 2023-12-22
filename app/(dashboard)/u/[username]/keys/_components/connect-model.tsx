@@ -38,6 +38,7 @@ export const ConnectModel = () => {
       createIngress(parseInt(ingressType))
         .then(() => {
           toast.success("Ingress created");
+          closeRef?.current?.click();
         })
         .catch(() => toast.error("Something went wrong"));
     });
