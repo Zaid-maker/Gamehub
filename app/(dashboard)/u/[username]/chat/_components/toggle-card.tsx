@@ -1,7 +1,9 @@
 "use client";
 
+import { updateStream } from "@/actions/stream";
 import { Switch } from "@/components/ui/switch";
 import { useTransition } from "react";
+import { toast } from "sonner";
 
 type FieldTypes = "isChatEnabled" | "isChatDelayed" | "isChatFollowersOnly";
 
@@ -18,7 +20,13 @@ export const ToggleCard = ({
 }: ToggleCardProps) => {
   const [isPending, startTransition] = useTransition();
 
-  const onChange = () => {};
+  const onChange = () => {
+    startTransition(() => {
+      updateStream({ [field]: !value })
+        .then(() => toast.success("Chat Settings Updated"))
+        .catch(() => toast.error("Something went wrong"));
+    });
+  };
 
   return (
     <div className="rounded-xl bg-muted p-6">
