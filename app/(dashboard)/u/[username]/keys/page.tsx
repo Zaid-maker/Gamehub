@@ -19,7 +19,7 @@ const Keys = async () => {
         <Button variant="primary">Generate</Button>
       </div>
       <div className="space-y-4">
-        <UrlCard />
+        <UrlCard value={stream.serverUrl} />
       </div>
     </div>
   );
