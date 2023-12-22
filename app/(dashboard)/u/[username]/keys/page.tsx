@@ -1,8 +1,8 @@
 import { Button } from "@/components/ui/button";
-import React from "react";
-import { UrlCard } from "./_components/url-card";
 import { getSelf } from "@/lib/auth-service";
 import { getStreamByUserId } from "@/lib/stream-service";
+import { KeyCard } from "./_components/key-card";
+import { UrlCard } from "./_components/url-card";
 
 const Keys = async () => {
   const self = await getSelf();
@@ -20,6 +20,7 @@ const Keys = async () => {
       </div>
       <div className="space-y-4">
         <UrlCard value={stream.serverUrl} />
+        <KeyCard value={stream.streamKey} />
       </div>
     </div>
   );
