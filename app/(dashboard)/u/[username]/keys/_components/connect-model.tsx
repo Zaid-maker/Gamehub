@@ -4,6 +4,7 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogHeader,
   DialogTitle,
@@ -48,6 +49,12 @@ export const ConnectModel = () => {
             connection
           </AlertDescription>
         </Alert>
+        <div className="flex justify-between">
+          <DialogClose asChild>
+            <Button variant="ghost">Cancel</Button>
+          </DialogClose>
+          <Button variant="primary">Generate</Button>
+        </div>
       </DialogContent>
     </Dialog>
   );
