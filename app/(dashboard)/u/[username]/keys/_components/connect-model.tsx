@@ -20,7 +20,7 @@ import {
 } from "@/components/ui/select";
 import { IngressInput } from "livekit-server-sdk";
 import { AlertTriangle } from "lucide-react";
-import { useState, useTransition } from "react";
+import { ElementRef, useRef, useState, useTransition } from "react";
 import { toast } from "sonner";
 
 const RTMP = String(IngressInput.RTMP_INPUT);
@@ -29,6 +29,7 @@ const WHIP = String(IngressInput.WHIP_INPUT);
 type IngressType = typeof RTMP | typeof WHIP;
 
 export const ConnectModel = () => {
+  const closeRef = useRef<ElementRef<"button">>(null);
   const [isPending, startTransition] = useTransition();
   const [ingressType, setIngressType] = useState<IngressType>(RTMP);
 
@@ -73,7 +74,7 @@ export const ConnectModel = () => {
           </AlertDescription>
         </Alert>
         <div className="flex justify-between">
-          <DialogClose asChild>
+          <DialogClose ref={closeRef} asChild>
             <Button variant="ghost">Cancel</Button>
           </DialogClose>
           <Button disabled={isPending} onClick={onSubmit} variant="primary">
