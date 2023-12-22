@@ -1,6 +1,7 @@
 "use client";
 
 import { updateStream } from "@/actions/stream";
+import { Skeleton } from "@/components/ui/skeleton";
 import { Switch } from "@/components/ui/switch";
 import { useTransition } from "react";
 import { toast } from "sonner";
@@ -44,4 +45,8 @@ export const ToggleCard = ({
       </div>
     </div>
   );
+};
+
+export const ToggleCardSkeleton = () => {
+  return <Skeleton className="rounded-xl p-10 w-full" />;
 };
