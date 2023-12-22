@@ -1,5 +1,6 @@
 "use client";
 
+import { createIngress } from "@/actions/ingress";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import {
@@ -17,12 +18,30 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { IngressInput } from "livekit-server-sdk";
 import { AlertTriangle } from "lucide-react";
+import { useState, useTransition } from "react";
+import { toast } from "sonner";
 
-const RTMP = "RTMP";
-const WHIP = "WHIP";
+const RTMP = String(IngressInput.RTMP_INPUT);
+const WHIP = String(IngressInput.WHIP_INPUT);
+
+type IngressType = typeof RTMP | typeof WHIP;
 
 export const ConnectModel = () => {
+  const [isPending, startTransition] = useTransition();
+  const [ingressType, setIngressType] = useState<IngressType>(RTMP);
+
+  const onSubmit = () => {
+    startTransition(() => {
+      createIngress(parseInt(ingressType))
+        .then(() => {
+          toast.success("Ingress created");
+        })
+        .catch(() => toast.error("Something went wrong"));
+    });
+  };
+
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -32,7 +51,11 @@ export const ConnectModel = () => {
         <DialogHeader>
           <DialogTitle>Generate Connection</DialogTitle>
         </DialogHeader>
-        <Select>
+        <Select
+          disabled={isPending}
+          value={ingressType}
+          onValueChange={(value) => setIngressType(value)}
+        >
           <SelectTrigger className="w-full">
             <SelectValue placeholder="Ingess Type" />
           </SelectTrigger>
@@ -53,7 +76,9 @@ export const ConnectModel = () => {
           <DialogClose asChild>
             <Button variant="ghost">Cancel</Button>
           </DialogClose>
-          <Button variant="primary">Generate</Button>
+          <Button disabled={isPending} onClick={onSubmit} variant="primary">
+            Generate
+          </Button>
         </div>
       </DialogContent>
     </Dialog>
