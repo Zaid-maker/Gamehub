@@ -1,6 +1,6 @@
 import { getSelf } from "@/lib/auth-service";
 import { getStreamByUserId } from "@/lib/stream-service";
-import { ConnectModel } from "./_components/connect-model";
+import { ConnectModal } from "./_components/connect-model";
 import { KeyCard } from "./_components/key-card";
 import { UrlCard } from "./_components/url-card";
 
@@ -16,7 +16,7 @@ const Keys = async () => {
     <div className="p-6">
       <div className="flex items-center justify-between mb-4">
         <h1 className="text-2xl font-semibold">Stream Key & URLs</h1>
-        <ConnectModel />
+        <ConnectModal />
       </div>
       <div className="space-y-4">
         <UrlCard value={stream.serverUrl} />
