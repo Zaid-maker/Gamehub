@@ -56,7 +56,7 @@ export const getRecommended = async () => {
           },
         },
         {
-          createAt: "desc",
+          createdAt: "desc",
         },
       ],
     });
@@ -76,7 +76,7 @@ export const getRecommended = async () => {
           },
         },
         {
-          createAt: "desc",
+          createdAt: "desc",
         },
       ],
     });
