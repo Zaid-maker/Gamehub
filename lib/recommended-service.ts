@@ -42,15 +42,43 @@ export const getRecommended = async () => {
           },
         ],
       },
-      orderBy: {
-        createAt: "desc",
+      include: {
+        stream: {
+          select: {
+            isLive: true,
+          },
+        },
       },
+      orderBy: [
+        {
+          stream: {
+            isLive: "desc",
+          },
+        },
+        {
+          createAt: "desc",
+        },
+      ],
     });
   } else {
     users = await db.user.findMany({
-      orderBy: {
-        createAt: "desc",
+      include: {
+        stream: {
+          select: {
+            isLive: true,
+          },
+        },
       },
+      orderBy: [
+        {
+          stream: {
+            isLive: "desc",
+          },
+        },
+        {
+          createAt: "desc",
+        },
+      ],
     });
   }
 
