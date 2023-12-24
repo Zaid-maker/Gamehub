@@ -26,7 +26,7 @@ export const Video = ({ hostName, hostIdentity }: VideoProps) => {
   let content;
 
   if (!participant && connectionState === ConnectionState.Connected) {
-    content = <OfflineVideo />;
+    content = <OfflineVideo username={hostName} />;
   } else if (!participant || tracks.length === 0) {
     content = <LoadingVideo />;
   } else {
