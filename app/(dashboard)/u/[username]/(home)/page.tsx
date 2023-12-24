@@ -1,3 +1,4 @@
+import { StreamPlayer } from "@/components/stream-player";
 import { getUserByUsername } from "@/lib/user-service";
 import { currentUser } from "@clerk/nextjs";
 
@@ -15,7 +16,11 @@ const CreatorPage = async ({ params }: CreatorPageProps) => {
     throw new Error("Unauthorized");
   }
 
-  return <div className="h-full">CreatorPage</div>;
+  return (
+    <div className="h-full">
+      <StreamPlayer user={user} stream={user.stream} isFollowing />
+    </div>
+  );
 };
 
 export default CreatorPage;
