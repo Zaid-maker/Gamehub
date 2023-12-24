@@ -30,7 +30,7 @@ export const Video = ({ hostName, hostIdentity }: VideoProps) => {
   } else if (!participant || tracks.length === 0) {
     content = <LoadingVideo label={connectionState} />;
   } else {
-    content = <LiveVideo />;
+    content = <LiveVideo participant={participant} />;
   }
 
   return <div className="aspect-video border-b group relative">{content}</div>;
