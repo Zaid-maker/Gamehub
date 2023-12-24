@@ -6,6 +6,9 @@ import {
   useRemoteParticipant,
   useTracks,
 } from "@livekit/components-react";
+import { OfflineVideo } from "./offline-video";
+import { LoadingVideo } from "./loading-video";
+import { LiveVideo } from "./live-video";
 
 interface VideoProps {
   hostName: string;
@@ -23,11 +26,11 @@ export const Video = ({ hostName, hostIdentity }: VideoProps) => {
   let content;
 
   if (!participant && connectionState === ConnectionState.Connected) {
-    content = <div>Offline</div>;
+    content = <OfflineVideo />;
   } else if (!participant || tracks.length === 0) {
-    content = <div>Loading</div>;
+    content = <LoadingVideo />;
   } else {
-    content = <div>Live</div>;
+    content = <LiveVideo />;
   }
 
   return <div className="aspect-video border-b group relative">{content}</div>;
