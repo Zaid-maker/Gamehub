@@ -42,5 +42,10 @@ jobs:
       - name: Install
         run: npm install
 
+      - name: Setup Testcontainers Cloud Client
+        uses: atomicjar/testcontainers-cloud-setup-action@v1
+        with:
+          token: ${{ secrets.TC_CLOUD_TOKEN }}
+
       - name: Build & Lint
         run: turbo build lint
