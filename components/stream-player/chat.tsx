@@ -14,6 +14,7 @@ import { ChatVariant, useChatSidebar } from "@/store/use-chat-sidebar";
 //import { ChatForm, ChatFormSkeleton } from "./chat-form";
 //import { ChatList, ChatListSkeleton } from "./chat-list";
 import { ChatHeader, ChatHeaderSkeleton } from "./chat-header";
+import { ChatForm } from "./chat-form";
 //import { ChatCommunity } from "./chat-community";
 
 interface ChatProps {
@@ -73,7 +74,15 @@ export const Chat = ({
       <ChatHeader />
       {variant === ChatVariant.CHAT && (
         <>
-          <p>Chat Mode</p>
+          <ChatForm
+            onSubmit={onSubmit}
+            value={value}
+            onChange={onChange}
+            isHidden={isHidden}
+            isFollowersOnly={isChatFollowersOnly}
+            isDelayed={isChatDelayed}
+            isFollowing={isFollowing}
+          />
         </>
       )}
       {variant === ChatVariant.COMMUNITY && (
