@@ -1,11 +1,31 @@
+import { useChatSidebar } from "@/store/use-chat-sidebat";
 import React from "react";
+import { ChatHeader } from "./chat-header";
 
-export const Chat = () => {
+interface ChatProps {
+  hostName: string;
+  hostIdentity: string;
+  viewerName: string;
+  isFollowing: boolean;
+  isChatEnabled: boolean;
+  isChatDelayed: boolean;
+  isChatFollowersOnly: boolean;
+}
+
+export const Chat = ({
+  hostName,
+  hostIdentity,
+  viewerName,
+  isFollowing,
+  isChatEnabled,
+  isChatDelayed,
+  isChatFollowersOnly,
+}: ChatProps) => {
+  const { variant, onExpand } = useChatSidebar((state) => state);
+
   return (
-    <div className="p-6">
-      <div className="mb-4">
-        <h1 className="text-2xl font-semibold">Chat</h1>
-      </div>
+    <div className="flex flex-col bg-background border-l border-b pt-0 h-[calc(100vh-80px)]">
+      <ChatHeader />
     </div>
   );
 };
