@@ -15,6 +15,7 @@ import { ChatVariant, useChatSidebar } from "@/store/use-chat-sidebar";
 //import { ChatList, ChatListSkeleton } from "./chat-list";
 import { ChatHeader, ChatHeaderSkeleton } from "./chat-header";
 import { ChatForm } from "./chat-form";
+import { ChatList } from "./chat-list";
 //import { ChatCommunity } from "./chat-community";
 
 interface ChatProps {
@@ -74,6 +75,7 @@ export const Chat = ({
       <ChatHeader />
       {variant === ChatVariant.CHAT && (
         <>
+          <ChatList messages={reversedMessages} isHidden={isHidden} />
           <ChatForm
             onSubmit={onSubmit}
             value={value}
