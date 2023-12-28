@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 import { useChatSidebar } from "@/store/use-chat-sidebar";
 import { LiveKitRoom } from "@livekit/components-react";
 import { Stream, User } from "@prisma/client";
-import { Chat } from "./chat";
+import { Chat, ChatSkeleton } from "./chat";
 import { ChatToggle } from "./chat-toggle";
 import { Video, VideoSkeleton } from "./video";
 
@@ -68,7 +68,9 @@ export const StreamPlayerSkeleton = () => {
         <VideoSkeleton />
         {/*<HeaderSkeleton />*/}
       </div>
-      <div className="col-span-1 bg-background">{/*<ChatSkeleton />*/}</div>
+      <div className="col-span-1 bg-background">
+        <ChatSkeleton />
+      </div>
     </div>
   );
 };

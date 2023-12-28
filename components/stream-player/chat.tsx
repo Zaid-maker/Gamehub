@@ -13,7 +13,7 @@ import { ChatVariant, useChatSidebar } from "@/store/use-chat-sidebar";
 
 //import { ChatForm, ChatFormSkeleton } from "./chat-form";
 //import { ChatList, ChatListSkeleton } from "./chat-list";
-import { ChatHeader } from "./chat-header";
+import { ChatHeader, ChatHeaderSkeleton } from "./chat-header";
 //import { ChatCommunity } from "./chat-community";
 
 interface ChatProps {
@@ -71,6 +71,14 @@ export const Chat = ({
   return (
     <div className="flex flex-col bg-background border-l border-b pt-0 h-[calc(100vh-80px)]">
       <ChatHeader />
+    </div>
+  );
+};
+
+export const ChatSkeleton = () => {
+  return (
+    <div className="flex flex-col border-l border-b pt-0 h-[calc(100vh-80px)] border-2">
+      <ChatHeaderSkeleton />
     </div>
   );
 };
