@@ -1,6 +1,6 @@
 import { ReceivedChatMessage } from "@livekit/components-react";
 import React from "react";
-import { ChatMessage } from "./chatMesage";
+import { ChatMessage } from "./chat-message";
 
 interface ChatListProps {
   messages: ReceivedChatMessage[];
