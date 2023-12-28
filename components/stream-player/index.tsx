@@ -1,13 +1,13 @@
 "use client";
 
 import { useViewerToken } from "@/hooks/use-viewer-token";
-import { Stream, User } from "@prisma/client";
-import { LiveKitRoom } from "@livekit/components-react";
 import { cn } from "@/lib/utils";
-import { Video, VideoSkeleton } from "./video";
+import { useChatSidebar } from "@/store/use-chat-sidebar";
+import { LiveKitRoom } from "@livekit/components-react";
+import { Stream, User } from "@prisma/client";
 import { Chat } from "./chat";
-import { useChatSidebar } from "@/store/use-chat-sidebat";
 import { ChatToggle } from "./chat-toggle";
+import { Video, VideoSkeleton } from "./video";
 
 interface StreamPlayerProps {
   user: User & { stream: Stream | null };

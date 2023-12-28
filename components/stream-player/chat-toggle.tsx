@@ -1,6 +1,6 @@
 "use client";
 
-import { useChatSidebar } from "@/store/use-chat-sidebat";
+import { useChatSidebar } from "@/store/use-chat-sidebar";
 import { ArrowLeftFromLine, ArrowRightFromLine } from "lucide-react";
 import React from "react";
 import { Hint } from "../hint";
