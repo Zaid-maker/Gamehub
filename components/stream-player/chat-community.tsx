@@ -6,6 +6,7 @@ import { ScrollArea } from "../ui/scroll-area";
 import { useDebounce } from "usehooks-ts";
 import { useParticipants } from "@livekit/components-react";
 import { LocalParticipant, RemoteParticipant } from "livekit-client";
+import { CommunityItem } from "./community-item";
 
 interface ChatCommunityProps {
   viewerName: string;
@@ -62,9 +63,15 @@ export const ChatCommunity = ({
         <p className="text-center text-sm text-muted-foreground hidden last:block p-2">
           No results
         </p>
-        {filteredParticipants.map((participant) => {
-          <div key={participant.identity}></div>;
-        })}
+        {filteredParticipants.map((participant) => (
+          <CommunityItem
+            key={participant.identity}
+            hostName={hostName}
+            viewerName={viewerName}
+            participantName={participant.name}
+            participantIdentity={participant.identity}
+          />
+        ))}
       </ScrollArea>
     </div>
   );
