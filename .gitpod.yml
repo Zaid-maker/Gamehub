@@ -1,3 +1,4 @@
 tasks:
-  - init: npm install && npm run build
-    command: npm run start
+  - name: Start development environment
+    init: npm install
+    command: npm run dev
