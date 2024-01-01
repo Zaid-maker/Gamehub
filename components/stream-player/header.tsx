@@ -8,6 +8,7 @@ import React from "react";
 import { UserAvatar, UserAvatarSkeleton } from "../user-avatar";
 import { UserIcon } from "lucide-react";
 import { Skeleton } from "../ui/skeleton";
+import { Actions } from "./actions";
 
 interface HeaderProps {
   hostName: string;
@@ -65,6 +66,11 @@ export const Header = ({
           )}
         </div>
       </div>
+      <Actions
+        hostIdentity={hostIdentity}
+        isFollowing={isFollowing}
+        isHost={isHost}
+      />
     </div>
   );
 };
