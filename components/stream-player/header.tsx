@@ -9,6 +9,7 @@ import { UserAvatar, UserAvatarSkeleton } from "../user-avatar";
 import { UserIcon } from "lucide-react";
 import { Skeleton } from "../ui/skeleton";
 import { Actions } from "./actions";
+import { VerifiedMark } from "../verified-mark";
 
 interface HeaderProps {
   hostName: string;
@@ -49,6 +50,7 @@ export const Header = ({
         <div className="space-y-1">
           <div className="flex items-center gap-x-2">
             <h2 className="text-lg font-semibold">{hostName}</h2>
+            <VerifiedMark />
           </div>
           <p className="text-sm font-semibold">{name}</p>
           {isLive ? (
