@@ -8,7 +8,7 @@ import React from "react";
 import { UserAvatar, UserAvatarSkeleton } from "../user-avatar";
 import { UserIcon } from "lucide-react";
 import { Skeleton } from "../ui/skeleton";
-import { Actions } from "./actions";
+import { Actions, ActionsSkeleton } from "./actions";
 import { VerifiedMark } from "../verified-mark";
 
 interface HeaderProps {
@@ -87,7 +87,7 @@ export const HeaderSkeleton = () => {
           <Skeleton className="h-4 w-24" />
         </div>
       </div>
-      {/*<ActionsSkeleton />*/}
+      <ActionsSkeleton />
     </div>
   );
 };
