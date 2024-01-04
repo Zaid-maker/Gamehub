@@ -34,7 +34,7 @@ export const InfoCard = ({
               Maximize your visibility
             </p>
           </div>
-          <InfoModal />
+          <InfoModal initialName={name} initialThumbnailUrl={thumbnailUrl} />
         </div>
         <Separator />
         <div className="p-4 lg:p-6 space-y-4">

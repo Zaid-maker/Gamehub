@@ -12,7 +12,15 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "../ui/input";
 
-export const InfoModal = () => {
+interface InfoModalProps {
+  initialName: string;
+  initialThumbnailUrl: string | null;
+}
+
+export const InfoModal = ({
+  initialName,
+  initialThumbnailUrl,
+}: InfoModalProps) => {
   return (
     <Dialog>
       <DialogTrigger asChild>
