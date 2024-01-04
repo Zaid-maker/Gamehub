@@ -1,5 +1,6 @@
 "use client";
 
+import { updateStream } from "@/actions/stream";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -13,6 +14,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useRouter } from "next/navigation";
 import React, { ElementRef, useRef, useState, useTransition } from "react";
+import { toast } from "sonner";
 
 interface InfoModalProps {
   initialName: string;
@@ -32,6 +34,15 @@ export const InfoModal = ({
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    startTransition(() => {
+      updateStream({ name: name })
+        .then(() => {
+          toast.success("Stream settings updated");
+          closeRef?.current?.click();
+        })
+        .catch(() => toast.error("Something went wrong!"));
+    });
   };
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
