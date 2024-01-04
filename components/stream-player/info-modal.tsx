@@ -51,6 +51,18 @@ export const InfoModal = ({
               value={name}
             />
           </div>
+          <div className="space-y-2">
+            <Label>Thumbnail</Label>
+            {thumbnailUrl ? (
+              <div className="relative aspect-video rounded-xl overflow-hidden border border-white/10">
+                <div className="absolute top-2 right-2 z-[10]"></div>
+              </div>
+            ) : (
+              <div className="rounded-xl border outline-dashed outline-muted">
+                Upload
+              </div>
+            )}
+          </div>
           <div className="flex justify-between">
             <DialogClose ref={closeRef} asChild>
               <Button type="button" variant="ghost">
