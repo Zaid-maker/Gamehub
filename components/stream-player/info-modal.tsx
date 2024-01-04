@@ -1,6 +1,6 @@
 "use client";
 
-import React, { ElementRef, useRef, useState, useTransition } from "react";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogClose,
@@ -9,10 +9,10 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { useRouter } from "next/navigation";
 import { Label } from "@/components/ui/label";
+import { useRouter } from "next/navigation";
+import React, { ElementRef, useRef, useState, useTransition } from "react";
 
 interface InfoModalProps {
   initialName: string;
@@ -30,6 +30,14 @@ export const InfoModal = ({
   const [name, setName] = useState(initialName);
   const [thumbnailUrl, setThumbnailUrl] = useState(initialThumbnailUrl);
 
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+  };
+
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setName(e.target.value);
+  };
+
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -41,13 +49,13 @@ export const InfoModal = ({
         <DialogHeader>
           <DialogTitle>Edit Stream Info</DialogTitle>
         </DialogHeader>
-        <form className="space-y-14">
+        <form onSubmit={onSubmit} className="space-y-14">
           <div className="space-y-2">
             <Label>Name</Label>
             <Input
               disabled={isPending}
               placeholder="Stream Name"
-              onChange={() => {}}
+              onChange={onChange}
               value={name}
             />
           </div>
