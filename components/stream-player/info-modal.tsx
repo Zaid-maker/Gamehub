@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { ElementRef, useRef, useState, useTransition } from "react";
 import {
   Dialog,
   DialogClose,
@@ -10,7 +10,9 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { Input } from "../ui/input";
+import { Input } from "@/components/ui/input";
+import { useRouter } from "next/navigation";
+import { Label } from "@/components/ui/label";
 
 interface InfoModalProps {
   initialName: string;
@@ -21,6 +23,13 @@ export const InfoModal = ({
   initialName,
   initialThumbnailUrl,
 }: InfoModalProps) => {
+  const router = useRouter();
+  const closeRef = useRef<ElementRef<"button">>(null);
+
+  const [isPending, startTransition] = useTransition();
+  const [name, setName] = useState(initialName);
+  const [thumbnailUrl, setThumbnailUrl] = useState(initialThumbnailUrl);
+
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -34,15 +43,21 @@ export const InfoModal = ({
         </DialogHeader>
         <form className="space-y-14">
           <div className="space-y-2">
-            <Input disabled placeholder="Stream Name" onChange={() => {}} />
+            <Label>Name</Label>
+            <Input
+              disabled={isPending}
+              placeholder="Stream Name"
+              onChange={() => {}}
+              value={name}
+            />
           </div>
           <div className="flex justify-between">
-            <DialogClose asChild>
+            <DialogClose ref={closeRef} asChild>
               <Button type="button" variant="ghost">
                 Cancel
               </Button>
             </DialogClose>
-            <Button disabled variant="primary" type="submit">
+            <Button disabled={isPending} variant="primary" type="submit">
               Save
             </Button>
           </div>
