@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { UploadDropzone } from "@/lib/uploadthing";
 import { useRouter } from "next/navigation";
 import React, { ElementRef, useRef, useState, useTransition } from "react";
 import { toast } from "sonner";
@@ -78,7 +79,22 @@ export const InfoModal = ({
               </div>
             ) : (
               <div className="rounded-xl border outline-dashed outline-muted">
-                Upload
+                <UploadDropzone
+                  endpoint="thumbnailUploader"
+                  appearance={{
+                    label: {
+                      color: "#FFFFFF",
+                    },
+                    allowedContent: {
+                      color: "#FFFFFF",
+                    },
+                  }}
+                  onClientUploadComplete={(res) => {
+                    setThumbnailUrl(res?.[0]?.url);
+                    router.refresh();
+                    closeRef?.current?.click();
+                  }}
+                />
               </div>
             )}
           </div>
