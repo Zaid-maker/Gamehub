@@ -13,9 +13,12 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { UploadDropzone } from "@/lib/uploadthing";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { ElementRef, useRef, useState, useTransition } from "react";
 import { toast } from "sonner";
+import { Hint } from "../hint";
+import { Trash } from "lucide-react";
 
 interface InfoModalProps {
   initialName: string;
@@ -75,7 +78,24 @@ export const InfoModal = ({
             <Label>Thumbnail</Label>
             {thumbnailUrl ? (
               <div className="relative aspect-video rounded-xl overflow-hidden border border-white/10">
-                <div className="absolute top-2 right-2 z-[10]"></div>
+                <div className="absolute top-2 right-2 z-[10]">
+                  <Hint label="Remove thumbnail" asChild side="left">
+                    <Button
+                      type="button"
+                      disabled={isPending}
+                      onClick={() => {}}
+                      className="h-auto w-auto p-1.5"
+                    >
+                      <Trash className="h-4 w-4" />
+                    </Button>
+                  </Hint>
+                </div>
+                <Image
+                  alt="thumbnail"
+                  src={thumbnailUrl}
+                  className="object-cover"
+                  fill
+                />
               </div>
             ) : (
               <div className="rounded-xl border outline-dashed outline-muted">
