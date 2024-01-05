@@ -36,6 +36,18 @@ export const InfoModal = ({
   const [name, setName] = useState(initialName);
   const [thumbnailUrl, setThumbnailUrl] = useState(initialThumbnailUrl);
 
+  const onRemove = () => {
+    startTransition(() => {
+      updateStream({ thumbnailUrl: null })
+        .then(() => {
+          toast.success("Thumbnail removed");
+          setThumbnailUrl("");
+          closeRef?.current?.click();
+        })
+        .catch(() => toast.error("Something went wrong!"));
+    });
+  };
+
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -83,7 +95,7 @@ export const InfoModal = ({
                     <Button
                       type="button"
                       disabled={isPending}
-                      onClick={() => {}}
+                      onClick={onRemove}
                       className="h-auto w-auto p-1.5"
                     >
                       <Trash className="h-4 w-4" />
