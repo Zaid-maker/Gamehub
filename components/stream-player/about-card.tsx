@@ -2,6 +2,7 @@
 
 import React from "react";
 import { VerifiedMark } from "../verified-mark";
+import { BioModal } from "./bio-modal";
 
 interface AboutCardProps {
   hostName: string;
@@ -31,7 +32,7 @@ export const AboutCard = ({
             About {hostName}
             <VerifiedMark />
           </div>
-          {isHost && <p>Edit</p>}
+          {isHost && <BioModal initialValue={bio} />}
         </div>
         <div className="text-sm text-muted-foreground">
           <span className="text-semibold text-primary">{followedByCount}</span>{" "}
