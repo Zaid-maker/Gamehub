@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/dialog";
 import React, { ElementRef, useRef, useState, useTransition } from "react";
 import { toast } from "sonner";
+import { Textarea } from "../ui/textarea";
 
 interface BioModalProps {
   initialValue: string;
@@ -48,6 +49,13 @@ export const BioModal = ({ initialValue }: BioModalProps) => {
           <DialogTitle>Edit Stream Info</DialogTitle>
         </DialogHeader>
         <form onSubmit={onSubmit} className="space-y-14">
+          <Textarea
+            placeholder="Tell your viewers about yourself..."
+            onChange={(e) => setValue(e.target.value)}
+            value={value}
+            disabled={isPending}
+            className="resize-none"
+          />
           <div className="flex justify-between">
             <DialogClose ref={closeRef} asChild>
               <Button type="button" variant="ghost">
