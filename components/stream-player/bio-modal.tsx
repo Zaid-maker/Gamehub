@@ -10,7 +10,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { useRouter } from "next/navigation";
 import React, { ElementRef, useRef, useState, useTransition } from "react";
 import { toast } from "sonner";
 
@@ -19,7 +18,6 @@ interface BioModalProps {
 }
 
 export const BioModal = ({ initialValue }: BioModalProps) => {
-  const router = useRouter();
   const closeRef = useRef<ElementRef<"button">>(null);
 
   const [isPending, startTransition] = useTransition();
