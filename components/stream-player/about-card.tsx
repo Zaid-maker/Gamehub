@@ -8,7 +8,7 @@ interface AboutCardProps {
   hostName: string;
   hostIdentity: string;
   viewerIdentity: string;
-  bio: string;
+  bio: string | null;
   followedByCount: number;
 }
 

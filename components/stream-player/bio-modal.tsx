@@ -22,7 +22,7 @@ export const BioModal = ({ initialValue }: BioModalProps) => {
   const closeRef = useRef<ElementRef<"button">>(null);
 
   const [isPending, startTransition] = useTransition();
-  const [value, setValue] = useState(initialValue);
+  const [value, setValue] = useState(initialValue || "");
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -31,9 +31,9 @@ export const BioModal = ({ initialValue }: BioModalProps) => {
       updateUser({ bio: value })
         .then(() => {
           toast.success("Your Bio has successfully updated!");
-          closeRef?.current?.click();
+          closeRef.current?.click();
         })
-        .catch(() => toast.error("Something went wrong!"));
+        .catch(() => toast.error("Something went wrong"));
     });
   };
 
@@ -46,9 +46,9 @@ export const BioModal = ({ initialValue }: BioModalProps) => {
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Edit Stream Info</DialogTitle>
+          <DialogTitle>Edit user bio</DialogTitle>
         </DialogHeader>
-        <form onSubmit={onSubmit} className="space-y-14">
+        <form onSubmit={onSubmit} className="space-y-4">
           <Textarea
             placeholder="Tell your viewers about yourself..."
             onChange={(e) => setValue(e.target.value)}
@@ -62,7 +62,7 @@ export const BioModal = ({ initialValue }: BioModalProps) => {
                 Cancel
               </Button>
             </DialogClose>
-            <Button disabled={isPending} variant="primary" type="submit">
+            <Button disabled={isPending} type="submit" variant="primary">
               Save
             </Button>
           </div>
