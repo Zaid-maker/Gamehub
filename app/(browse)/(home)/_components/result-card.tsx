@@ -1,4 +1,5 @@
-import { UserAvatar } from "@/components/user-avatar";
+import { Skeleton } from "@/components/ui/skeleton";
+import { UserAvatar, UserAvatarSkeleton } from "@/components/user-avatar";
 import { Stream, User } from "@prisma/client";
 import Link from "next/link";
 import React from "react";
@@ -32,5 +33,20 @@ export const ResultsCard = ({ data }: ResultsCardProps) => {
         </div>
       </div>
     </Link>
+  );
+};
+
+export const ResultCardSkeleton = () => {
+  return (
+    <div className="h-full w-full space-y-4">
+      {/*<ThumbnailSkeleton />*/}
+      <div className="flex gap-x-3">
+        <UserAvatarSkeleton />
+        <div className="flex flex-col gap-y-1">
+          <Skeleton className="h-4 w-32" />
+          <Skeleton className="h-3 w-24" />
+        </div>
+      </div>
+    </div>
   );
 };
