@@ -1,6 +1,7 @@
 import { Skeleton } from "@/components/ui/skeleton";
 import { getStreams } from "@/lib/feed-service";
 import React from "react";
+import { ResultsCard } from "./result-card";
 
 export const Results = async () => {
   const data = await getStreams();
@@ -14,8 +15,8 @@ export const Results = async () => {
         <div className="text-muted-foreground text-sm">No streams found.</div>
       )}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4">
-        {data.map((stream) => (
-          <div key={stream.id}>{stream.name}</div>
+        {data.map((result) => (
+          <ResultsCard key={result.id} data={result} />
         ))}
       </div>
     </div>
