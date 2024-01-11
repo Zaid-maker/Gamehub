@@ -1,3 +1,4 @@
+import { Thumbnail, ThumbnailSkeleton } from "@/components/thumbnail";
 import { Skeleton } from "@/components/ui/skeleton";
 import { UserAvatar, UserAvatarSkeleton } from "@/components/user-avatar";
 import { Stream, User } from "@prisma/client";
@@ -17,7 +18,7 @@ export const ResultsCard = ({ data }: ResultsCardProps) => {
   return (
     <Link href={`/${data.user.username}`}>
       <div className="h-dull w-full space-y-4">
-        Thumbnail
+        <Thumbnail />
         <div className="flex gap-x-3">
           <UserAvatar
             username={data.user.username}
@@ -39,7 +40,7 @@ export const ResultsCard = ({ data }: ResultsCardProps) => {
 export const ResultCardSkeleton = () => {
   return (
     <div className="h-full w-full space-y-4">
-      {/*<ThumbnailSkeleton />*/}
+      <ThumbnailSkeleton />
       <div className="flex gap-x-3">
         <UserAvatarSkeleton />
         <div className="flex flex-col gap-y-1">
