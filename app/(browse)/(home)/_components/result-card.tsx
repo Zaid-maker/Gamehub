@@ -18,7 +18,12 @@ export const ResultsCard = ({ data }: ResultsCardProps) => {
   return (
     <Link href={`/${data.user.username}`}>
       <div className="h-dull w-full space-y-4">
-        <Thumbnail />
+        <Thumbnail
+          src={data.thumbnailUrl}
+          fallback={data.user.imageUrl}
+          isLive={data.isLive}
+          username={data.user.username}
+        />
         <div className="flex gap-x-3">
           <UserAvatar
             username={data.user.username}

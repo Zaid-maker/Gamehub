@@ -1,7 +1,19 @@
 import React from "react";
 import { Skeleton } from "./ui/skeleton";
 
-export const Thumbnail = () => {
+interface ThumbnailProps {
+  src: string | null;
+  fallback: string;
+  isLive: boolean;
+  username: string;
+}
+
+export const Thumbnail = ({
+  src,
+  fallback,
+  isLive,
+  username,
+}: ThumbnailProps) => {
   let content;
 
   return (
