@@ -1,5 +1,6 @@
 import { getSearch } from "@/lib/search-service";
 import React from "react";
+import { ResultsCard } from "./results-card";
 
 interface ResultsProps {
   term?: string;
@@ -20,9 +21,7 @@ export const Results = async ({ term }: ResultsProps) => {
       )}
       <div className="flex flex-col gap-y-4">
         {data.map((result) => (
-          <div key={result.id}>
-            <p>{result.name}</p>
-          </div>
+          <ResultsCard key={result.id} data={result} />
         ))}
       </div>
     </div>
