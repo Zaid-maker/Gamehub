@@ -2,10 +2,6 @@ import { db } from "@/lib/db";
 import { WebhookReceiver } from "livekit-server-sdk";
 import { headers } from "next/headers";
 
-export const dynamic = "force-dynamic";
-
-export const runtime = "edge";
-
 const receiver = new WebhookReceiver(
   process.env.LIVEKIT_API_KEY!,
   process.env.LIVEKIT_API_SECRET!
