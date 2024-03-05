@@ -5,6 +5,10 @@ import { WebhookEvent } from "@clerk/nextjs/server";
 import { db } from "@/lib/db";
 import { resetIngresses } from "@/actions/ingress";
 
+export const dynamic = "force-dynamic";
+
+export const runtime = "edge";
+
 export async function POST(req: Request) {
   // You can find this in the Clerk Dashboard -> Webhooks -> choose the webhook
   const WEBHOOK_SECRET = process.env.CLERK_WEBHOOK_SECRET;
