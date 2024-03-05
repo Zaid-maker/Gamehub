@@ -5,6 +5,7 @@ export default authMiddleware({
         "/",
         "/api/webhooks(.*)",
         "/api/uploadthing",
+        "/api/hello",
         "/:username",
         "/search"
     ]
