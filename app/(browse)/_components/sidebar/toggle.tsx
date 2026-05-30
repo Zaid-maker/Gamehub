@@ -24,11 +24,13 @@ export const Toggle = () => {
       )}
       {!collapsed && (
         <div className="p-3 pl-6 mb-2 flex items-center w-full">
-          <p className="font-semibold text-primary">For you</p>
+          <p className="font-bold text-primary text-xl">
+            For you
+          </p>
           <Hint label={label} side="right" asChild>
             <Button
               onClick={onCollapse}
-              className="h-auto p-2 ml-auto"
+              className="h-auto p-2 ml-auto hover:bg-white/10 transition"
               variant="ghost"
             >
               <ArrowLeftFromLine className="h-4 w-4" />

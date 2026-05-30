@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 import { useSidebar } from "@/store/use-sidebar";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Hint } from "@/components/hint";
 
 interface UserItemProps {
   username: string;
@@ -24,28 +25,33 @@ export const UserItem = ({ username, imageUrl, isLive }: UserItemProps) => {
   const isActive = pathname === href;
 
   return (
-    <Button
-      asChild
-      variant="ghost"
-      className={cn(
-        "w-full h-12",
-        collapsed ? "justify-center" : "justify-start",
-        isActive && "bg-accent"
-      )}
-    >
-      <Link href={href}>
-        <div
-          className={cn(
-            "flex items-center w-full gap-x-4",
-            collapsed && "justify-center"
+    <Hint label={username} side="right" disabled={!collapsed}>
+      <Button
+        asChild
+        variant="ghost"
+        className={cn(
+          "w-full h-12 relative group",
+          collapsed ? "justify-center" : "justify-start",
+          isActive && "bg-accent"
+        )}
+      >
+        <Link href={href}>
+          {isActive && (
+            <div className="absolute left-0 w-[4px] h-8 bg-blue-600 rounded-r-full group-hover:h-full transition-all duration-200" />
           )}
-        >
-          <UserAvatar imageUrl={imageUrl} username={username} isLive={isLive} />
-          {!collapsed && <p className="truncate">{username}</p>}
-          {!collapsed && isLive && <LiveBadge className="ml-auto" />}
-        </div>
-      </Link>
-    </Button>
+          <div
+            className={cn(
+              "flex items-center w-full gap-x-4",
+              collapsed && "justify-center"
+            )}
+          >
+            <UserAvatar imageUrl={imageUrl} username={username} isLive={isLive} />
+            {!collapsed && <p className="truncate">{username}</p>}
+            {!collapsed && isLive && <LiveBadge className="ml-auto" />}
+          </div>
+        </Link>
+      </Button>
+    </Hint>
   );
 };
 

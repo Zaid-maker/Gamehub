@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { SignInButton, UserButton, currentUser } from "@clerk/nextjs";
+import { SignInButton, UserButton } from "@clerk/nextjs";
+import { currentUser } from "@clerk/nextjs/server";
 import { Clapperboard } from "lucide-react";
 import Link from "next/link";
 import React from "react";
@@ -21,15 +22,23 @@ export const Actions = async () => {
           <Button
             size="sm"
             variant="ghost"
-            className="text-muted-foreground hover:text-primary"
+            className="text-zinc-400 hover:text-white hover:bg-white/10 transition"
             asChild
           >
             <Link href={`/u/${user.username}`}>
               <Clapperboard className="h-5 w-5 lg:mr-2" />
-              <span className="hidden lg:block">Dashboard</span>
+              <span className="hidden lg:block font-medium">Dashboard</span>
             </Link>
           </Button>
-          <UserButton afterSignOutUrl="/" />
+          <div className="h-8 w-[1px] bg-white/10 mx-2 hidden lg:block" />
+          <UserButton
+            afterSignOutUrl="/"
+            appearance={{
+              elements: {
+                avatarBox: "h-9 w-9 border border-white/10 shadow-sm"
+              }
+            }}
+          />
         </div>
       )}
     </div>

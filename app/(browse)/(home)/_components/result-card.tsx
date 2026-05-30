@@ -17,7 +17,7 @@ interface ResultsCardProps {
 export const ResultsCard = ({ data }: ResultsCardProps) => {
   return (
     <Link href={`/${data.user.username}`}>
-      <div className="h-dull w-full space-y-4">
+      <div className="h-full w-full space-y-4 group">
         <Thumbnail
           src={data.thumbnailUrl}
           fallback={data.user.imageUrl}
@@ -31,10 +31,12 @@ export const ResultsCard = ({ data }: ResultsCardProps) => {
             isLive={data.isLive}
           />
           <div className="flex flex-col text-sm overflow-hidden">
-            <p className="truncate font-semibold hover:text-blue-500">
+            <p className="truncate font-semibold hover:text-blue-500 transition-colors">
               {data.name}
             </p>
-            <p className="text-muted-foreground">{data.user.username}</p>
+            <p className="text-muted-foreground group-hover:text-primary transition-colors">
+              {data.user.username}
+            </p>
           </div>
         </div>
       </div>

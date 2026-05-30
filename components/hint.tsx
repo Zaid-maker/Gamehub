@@ -11,9 +11,21 @@ interface HintProps {
   asChild?: boolean;
   side?: "top" | "bottom" | "left" | "right";
   align?: "start" | "center" | "end";
+  disabled?: boolean;
 }
 
-export const Hint = ({ label, children, asChild, side, align }: HintProps) => {
+export const Hint = ({
+  label,
+  children,
+  asChild,
+  side,
+  align,
+  disabled,
+}: HintProps) => {
+  if (disabled) {
+    return <>{children}</>;
+  }
+
   return (
     <TooltipProvider>
       <Tooltip delayDuration={0}>

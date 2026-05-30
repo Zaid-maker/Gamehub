@@ -65,3 +65,13 @@ export const getStreams = async () => {
 
   return streams;
 };
+
+export const getLiveStreamsCount = async () => {
+  const count = await db.stream.count({
+    where: {
+      isLive: true,
+    },
+  });
+
+  return count;
+};

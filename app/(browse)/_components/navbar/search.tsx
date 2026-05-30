@@ -34,17 +34,17 @@ export const Search = () => {
   return (
     <form
       onSubmit={onSubmit}
-      className="relative w-full lg:w-[400px] flex items-center"
+      className="relative w-full lg:w-[400px] flex items-center group"
     >
       <Input
         value={value}
         onChange={(e) => setValue(e.target.value)}
         placeholder="Search"
-        className="rounded-r-none focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0"
+        className="rounded-r-none focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0 bg-[#252731] border-none group-focus-within:bg-[#2b2d3a] transition-colors"
       />
       {value && (
         <X
-          className="absolute top-2.5 right-14 h-5 w-5 text-muted-foreground cursor-pointer hover:opacity-75 transition"
+          className="absolute top-2.5 right-14 h-5 w-5 text-muted-foreground cursor-pointer hover:text-white transition"
           onClick={onClear}
         />
       )}
@@ -52,9 +52,9 @@ export const Search = () => {
         type="submit"
         size="sm"
         variant="secondary"
-        className="rounded-l-none"
+        className="rounded-l-none bg-[#313131] hover:bg-[#3f3f3f] border-l border-black/20"
       >
-        <SearchIcon className="h-5 w-5 text-muted-foreground" />
+        <SearchIcon className="h-5 w-5 text-[#8b8e92] group-focus-within:text-white transition" />
       </Button>
     </form>
   );

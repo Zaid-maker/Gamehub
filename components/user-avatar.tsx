@@ -36,7 +36,7 @@ export const UserAvatar = ({
     <div className="relative">
       <Avatar
         className={cn(
-          isLive && "ring-2 ring-rose-500 border border-background",
+          isLive && "ring-2 ring-rose-500 border border-background shadow-[0_0_15px_rgba(244,63,94,0.5)]",
           avatarSizes({ size })
         )}
       >
