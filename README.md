@@ -1,6 +1,6 @@
 # Gamehub
 
-Live streamign app build in Next.js 14
+Live streaming app build in Next.js 14
 
 
 ## Key Features:
