@@ -31,5 +31,5 @@ Live streaming app build in Next.js 14
 - ⚡ Blazing fast application 
 - 📄 SSR (Server-Side Rendering) 
 - 🗺️ Grouped routes & layouts 
-- 🗃️ MySQL
+- 🗃️ PostgreSQL
 - 🚀 Deployment
